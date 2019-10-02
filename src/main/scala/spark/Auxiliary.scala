@@ -1,7 +1,6 @@
 package spark
 
 import org.apache.hadoop.io.{LongWritable, Text}
-
 import scala.collection.mutable
 import scala.util.matching.Regex
 
@@ -46,8 +45,6 @@ object Auxiliary {
     }
   }
 
-
-
   // helper function for extracting meta info
   def extractWarcMetaInfo(rawMetaInfo: String):  mutable.Map[String, String] = {
     val metaEntries = mutable.Map.empty[String, String]
@@ -59,33 +56,6 @@ object Auxiliary {
     metaEntries
   }
 
-  /*
-  HTTP/1.1 200 OK
-Date: Sat, 17 Aug 2019 20:32:22 GMT
-Content-Type: text/html; charset=utf-8
-X-Crawler-Transfer-Encoding: chunked
-Connection: keep-alive
-Set-Cookie: __cfduid=d18ff9b33e70487b9b45f0d6d8f5aae1f1566073941; expires=Sun, 16-Aug-20 20:32:21 GMT; path=/; domain=.013info.rs; HttpOnly
-X-Drupal-Cache: MISS
-Expires: Sun, 19 Nov 1978 05:00:00 GMT
-Cache-Control: public, max-age=300
-X-Content-Type-Options: nosniff
-Content-Language: sr
-X-Frame-Options: SAMEORIGIN
-X-Generator: Drupal 7 (http://drupal.org)
-Link: <https://013info.rs/sites/default/files/images/crna_hronika.jpg>; rel="image_src",<http://013info.rs/vesti/hronika/pancevo-ubistvo-na-sodari>; rel="canonical",<https://013info.rs/node/12357>; rel="shortlink"
-Last-Modified: Sat, 17 Aug 2019 20:33:32 GMT
-Vary: Cookie,Accept-Encoding
-Server: cloudflare
-CF-RAY: 507e6ab6dd22cf20-IAD
-X-Crawler-Content-Encoding: gzip
-Content-Length: 43365
-
-
-
-
-
-   */
   def extractResponseMetaInfo(responseMeta: String): (String, Option[String], Int) = {
     val metaEntries = mutable.Map.empty[String, String]
     val fields = responseMeta.split(newLine) // split string on newlines

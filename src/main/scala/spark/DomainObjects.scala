@@ -2,7 +2,6 @@ package spark
 
 import java.time.Instant
 import java.time.format.DateTimeParseException
-
 import scala.collection.mutable
 
 /**
@@ -65,40 +64,3 @@ object WarcRecord {
     WarcRecord(warcType, new java.sql.Date(dateMs), recordID, contentLength, contentType, infoID, concurrentTo, ip, targetURI, payloadDigest, blockDigest, payloadType, responseMeta._1, responseMeta._2, responseMeta._3, sourceHtml)
   }
 }
-
-
-/*
-/*
-
-: http://013info.rs/vesti/hronika/pancevo-ubistvo-na-sodari
-: sha1:P5LGYLYIECUMABRETXYXG5FTATT44Y55
-: sha1:AFZZNJ5YSPXI6HUNH3PGWKA7MHE3PWM2
-: text/html
-
- */
-
-
-
- */
-
-
-
-
-object Test extends App {
-
-
-  //Date string with offset information
-  val dateString = "2019-08-17T21:02:56Z"
-
-
-  val parsed = Instant.parse(dateString)
-  println(parsed)
-
-  println(Instant.MAX)
-
-
-}
-
-
-//case class WarcInfoRecord(warcType: String, warcDate: String, warcRecordId: String, contentType: String, contentLength: Int, pageText: String, filename: String) extends spark.WarcRecord(warcType, warcDate, warcRecordId, contentType, contentLength, pageText)
-//case class WarcInfoRecord(warcType: String, warcDate: String, warcRecordId: String, contentType: String, contentLength: Int, pageText: String, filename: String) extends spark.WarcRecord(warcType, warcDate, warcRecordId, contentType, contentLength, pageText)
