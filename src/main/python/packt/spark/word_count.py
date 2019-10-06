@@ -18,5 +18,3 @@ if __name__ == "__main__":
     counts.saveAsTextFile('./countsplits')
 
     sparksession.stop()
-
-# /Users/a/IdeaProjects/packtproject/src/main/resources/mapreduce
