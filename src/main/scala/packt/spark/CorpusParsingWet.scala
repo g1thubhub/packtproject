@@ -1,17 +1,17 @@
-package spark.webcorpus
+package packt.spark
 
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import spark.Auxiliary.parseRawWetRecord
-import spark.{Auxiliary, WarcWetRecord}
+import packt.HelperScala.{delimiterWarcWet, parseRawWetRecord}
+import packt.WarcWetRecord
 
 /**
-  * Code for parsing .wet files of the WARC corpus
-  *
-  * @author Phil, https://github.com/g1thubhub
-  */
+ * Code for parsing .wet files of the WARC corpus
+ *
+ * @author Phil, https://github.com/g1thubhub
+ */
 object CorpusParsingWet extends App {
 
   val threads = 2
@@ -24,7 +24,7 @@ object CorpusParsingWet extends App {
   import session.implicits._
 
   val hadoopConf = session.sparkContext.hadoopConfiguration
-  hadoopConf.set("textinputformat.record.delimiter", Auxiliary.delimiterWarcWet)
+  hadoopConf.set("textinputformat.record.delimiter", delimiterWarcWet)
 
   val inputLocationWet = CorpusParsingWet.getClass.getResource("/spark/webcorpus/warc.wet.sample").getPath
   val webpagesRDD: RDD[WarcWetRecord] = session.sparkContext

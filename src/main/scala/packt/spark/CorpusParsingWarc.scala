@@ -4,9 +4,15 @@ import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import spark.{Auxiliary, WarcRecord}
-import spark.Auxiliary.parseRawWarcRecord
+import packt.HelperScala.{delimiterWarcWet, parseRawWarcRecord}
+import packt.WarcRecord
+import packt.spark.CorpusParsingWet
 
+/**
+ * Code for parsing .warc files of the WARC corpus
+ *
+ * @author Phil, https://github.com/g1thubhub
+ */
 object CorpusParsingWarc {
 
   def main(args: Array[String]) = {
@@ -21,7 +27,7 @@ object CorpusParsingWarc {
     import org.apache.spark.sql._
 
     val hadoopConf = session.sparkContext.hadoopConfiguration
-    hadoopConf.set("textinputformat.record.delimiter", Auxiliary.delimiterWarcWet)
+    hadoopConf.set("textinputformat.record.delimiter", delimiterWarcWet)
 
     val inputLocationWarc = CorpusParsingWet.getClass.getResource("/spark/webcorpus/warc.sample").getPath
     val webpagesRDD: RDD[WarcRecord] = session.sparkContext

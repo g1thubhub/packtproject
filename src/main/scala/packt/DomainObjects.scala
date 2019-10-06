@@ -1,14 +1,14 @@
-package spark
+package packt
 
 import java.time.Instant
 import java.time.format.DateTimeParseException
 import scala.collection.mutable
 
 /**
-  * Domain objects for the WARC data
-  *
-  * @author Phil, https://github.com/g1thubhub
-  */
+ * Domain objects for the WARC data
+ *
+ * @author Phil, https://github.com/g1thubhub
+ */
 case class WarcWetRecord(warcType: String, targetURI: String, date: java.sql.Date, recordID: String, refersTo: String, digest: String, contentType: String, contentLength: Int, plainText: String)
 
 object WarcWetRecord {

@@ -1,15 +1,17 @@
-package spark
+package packt
 
 import org.apache.hadoop.io.{LongWritable, Text}
 import scala.collection.mutable
 import scala.util.matching.Regex
 
 /**
-  * Constants and helper functions
-  *
-  * @author Phil, https://github.com/g1thubhub
-  */
-object Auxiliary {
+ * Constants and helper functions
+ *
+ * @author Phil, https://github.com/g1thubhub
+ */
+object HelperScala {
+
+  val novellaLocation = "src/main/resources/mapreduce/HoD.txt" // location of input for word count programs
 
   val delimiterWarcWet = "WARC/1.0" // Wrong => Exception in thread "main" org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost, executor driver): java.lang.OutOfMemoryError: Java heap space
   val delimiterWarcWetBytes: Array[Byte] = delimiterWarcWet.getBytes()

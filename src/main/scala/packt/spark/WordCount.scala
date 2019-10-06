@@ -1,19 +1,20 @@
-package spark
+package packt.spark
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
+import packt.HelperScala
 
-object Scala_RDD {
+object WordCount {
 
   def main(args: Array[String]) {
 
     // Initialization:
     val threads = 3 // program simulates a single executor with 3 cores (one local JVM with 3 threads)
-    val session = SparkSession.builder.
-      master(s"local[$threads]")
+    val session = SparkSession.builder
+      .master(s"local[$threads]")
       .appName("Scala Word Count RDD")
       .getOrCreate()
-    val lines: RDD[String] = session.sparkContext.textFile("src/main/resources/moby_dick.txt")
+    val lines: RDD[String] = session.sparkContext.textFile(HelperScala.novellaLocation)
 
     // Preprocessing & reducing the input lines:
     val words: RDD[String] = lines.flatMap(_.split("\\s+"))
